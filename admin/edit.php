@@ -3,13 +3,13 @@ require '../config/db.php';
 
 $newsCollection = connectMongoDB();
 
+$id = new MongoDB\BSON\ObjectId($_GET['id']);
+$news = $newsCollection->findOne(['_id' => $id]);
+
 if (!isset($_GET['id'])) {
     header('Location: admin_dashboard.php?message=ID berita tidak valid');
     exit;
 }
-
-$id = new MongoDB\BSON\ObjectId($_GET['id']);
-$news = $newsCollection->findOne(['_id' => $id]);
 
 if (!$news) {
     header('Location: admin_dashboard.php?message=Berita tidak ditemukan');
