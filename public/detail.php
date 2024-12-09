@@ -35,8 +35,9 @@ $news = $collection->findOne(['_id' => $id]);
         <?php endif; ?>
 
         <div class="mt-4">
-            <p><?php echo $news['content']; ?></p>
+            <p><?php echo nl2br(htmlspecialchars($news['content'])); ?></p>
         </div>
+
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
